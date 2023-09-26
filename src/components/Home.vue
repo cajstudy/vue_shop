@@ -11,18 +11,9 @@
         <!-- 页面主体区 -->
         <el-container>
           <!-- 页面侧边栏 -->
-          <el-aside :width="isCollapse ? '64px' :'200px'">
-            <div class="toggle-button" @click="Collapes">|||</div>
-            <!-- 侧边栏菜单区域 -->
-            <el-menu
-      default-active="2"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      background-color="#333744"
-      text-color="#fff"
-      active-text-color="#409EFF"
-      unique-opened :collapse="isCollapse" :collapse-transition="false" router>
+          <el-menu background-color="#333744" text-color="#fff" active-text-color="#409EFF"
+          unique-opened :collapse="isCollapse"
+           :collapse-transition="false" router :default-active="activePath">
       <!-- 一级菜单 -->
       <el-submenu :index="item.id + ''" v-for="item in menulist" :key="item.id">
         <!-- 一级菜单的模板区域 -->
@@ -31,7 +22,8 @@
           <span>{{ item.authName }}</span>
         </template>
         <!-- 二级菜单 -->
-        <el-menu-item :index="'/'+ subItem.path + '' " v-for="subItem in item.children" :key="subItem.id">
+        <el-menu-item :index="'/'+ subItem.path + '' " v-for="subItem in item.children"
+        :key="subItem.id" @click="saveNavstate('/' + subItem.path)">
           <template slot="title">
             <i class="el-icon-menu"></i>
             <span>{{ subItem.authName }}</span>
@@ -39,7 +31,6 @@
         </el-menu-item>
       </el-submenu>
     </el-menu>
-          </el-aside>
           <!-- 右侧内容 -->
           <el-main>
             <!-- 路由占位符 -->
@@ -62,12 +53,14 @@ export default {
         '102':'iconfont icon-danju',
         '145':'iconfont icon-baobiao',
       },
-      isCollapse:false
+      isCollapse:false,
       // 是否折叠
+      activePath:''
     };
   },
   created(){
-    this.getMenuList()
+    this.getMenuList(),
+    this.activePath=window.sessionStorage.getItem('activePath')
   },
   methods:{
     logout(){
@@ -82,6 +75,11 @@ export default {
     },
     Collapes(){
        this.isCollapse=! this.isCollapse
+    },
+    // 保存链接的激活状态
+    saveNavstate(activePath){
+      window.sessionStorage.setItem('activePath',activePath)
+      this.activePath=activePath
     }
   }
  }
