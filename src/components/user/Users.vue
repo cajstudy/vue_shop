@@ -51,8 +51,15 @@
 </el-table>
 
   <!-- 分页区域 -->
-      <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="queryInfo.pagenum" :page-sizes="[1, 2, 5, 10]" :page-size="queryInfo.pagesize" layout="total, sizes, prev, pager, next, jumper" :total="total">
-      </el-pagination>
+      <el-pagination
+       @size-change="handleSizeChange"
+       @current-change="handleCurrentChange"
+      :current-page="queryInfo.pagenum"
+       :page-sizes="[3,5, 10,15]"
+      :page-size="queryInfo.pagesize"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="total">
+    </el-pagination>
 
 </el-card>
 <!-- 添加用户对话框 -->
@@ -160,7 +167,7 @@ export default {
       queryInfo:{
         query:'',//搜索关键字
         pagenum:1,
-        pagesize:2
+        pagesize:5
       },
       userList:[],
       total:0,
@@ -305,9 +312,11 @@ export default {
          if(!valid)return
         //  发起修改用户信息的数据请求
         const {data:res} = await this.$http.put('users/'+ this.editForm.id,{
+
           email:this.editForm.email,
           mobile:this.editForm.mobile
         })
+          console.log(res);
 
         if(res.meta.status!==200){
           return this.$message.error('更新用户信息失败！')
