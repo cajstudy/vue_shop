@@ -22,6 +22,7 @@
   <el-button type="primary" @click="addDialogVisible = true">添加用户</el-button>
   </el-col>
 </el-row>
+
 <!-- 用户列表区域 -->
 <el-table :data="userList"  border stripe>
   <el-table-column type="index"></el-table-column>
@@ -49,17 +50,16 @@
     </template>
   </el-table-column>
 </el-table>
-
-  <!-- 分页区域 -->
-      <el-pagination
+<!-- 分页区域 -->
+ <el-pagination
        @size-change="handleSizeChange"
        @current-change="handleCurrentChange"
       :current-page="queryInfo.pagenum"
-       :page-sizes="[3,5, 10,15]"
+      :page-sizes="[5,10,15,20]"
       :page-size="queryInfo.pagesize"
-      layout="total, sizes, prev, pager, next, jumper"
+       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
-    </el-pagination>
+</el-pagination>
 
 </el-card>
 <!-- 添加用户对话框 -->
@@ -139,7 +139,6 @@
 
 <script>
 export default {
-  name: '',
   data() {
     // 验证邮箱的规则
      var checkEmail = (rule, value, cb) => {
@@ -170,6 +169,7 @@ export default {
         pagesize:5
       },
       userList:[],
+      // 总数据条数
       total:0,
       addDialogVisible:false,//通知添加用户对话框的显示与隐藏
       // 添加用户表单数据
@@ -242,12 +242,12 @@ export default {
           return this.$message.error('获取用户列表失败！')
         }
         this.userList=res.data.users
-        this.total=res.data.toStal
+        this.total=res.data.total
         console.log(res);
       },
       // 监听pagesize改变事件
       handleSizeChange(newsize){
-          console.log(newsize);
+          console.log(this.total+'dddd');
           this.queryInfo.pagesize=newsize
           this.getUserList()
       },

@@ -54,3 +54,14 @@ body,
 .el-cascader-panel .el-cascader-node__postfix {
     top: 10px;
 }
+
+
+/* 进度条样式 */
+
+.el-steps {
+    margin: 15px 0;
+}
+
+.el-step__title {
+    font-size: 13px;
+}

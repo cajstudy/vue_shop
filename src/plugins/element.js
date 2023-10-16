@@ -29,7 +29,12 @@ import {
     Tree,
     Select,
     Option,
-    Cascader
+    Cascader,
+    Alert,
+    Tabs,
+    Steps,
+    Step,
+    TabPane
 
 } from 'element-ui'
 
@@ -39,9 +44,13 @@ Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Container)
 Vue.use(Header)
+Vue.use(Steps)
+Vue.use(Step)
 Vue.use(Aside)
 Vue.use(Main)
 Vue.use(Menu)
+Vue.use(Tabs)
+Vue.use(TabPane)
 Vue.use(Submenu)
 Vue.use(MenuItem)
 Vue.use(MenuItemGroup)
@@ -54,6 +63,7 @@ Vue.use(Table)
 Vue.use(Switch)
 Vue.use(TableColumn)
 Vue.use(Tooltip)
+Vue.use(Alert)
 Vue.use(Pagination)
 Vue.use(Dialog)
 Vue.use(Tag)
