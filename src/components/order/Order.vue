@@ -78,7 +78,15 @@
   title="物流进度"
   :visible.sync="progressVisible"
   width="50%">
-  <span>这是一段信息</span>
+  <!-- 时间线 -->
+   <el-timeline>
+    <el-timeline-item
+      v-for="(activity, index) in progressInfo"
+      :key="index"
+      :timestamp="activity.time">
+      {{activity.context}}
+    </el-timeline-item>
+  </el-timeline>
 </el-dialog>
   </div>
 </template>
@@ -145,9 +153,9 @@ export default {
         this.$refs.addressFormRef.resetFields()
       },
      async showProgressBox(){
-        const {data:res} =await this.$http.get('/kuaidi/1106975712662')
+        const {data:res} =await this.$http.get('/kuaidi/804909574412544580')
 
-        if(res.data.status !==200){
+        if(res.meta.status !==200){
            return this.$message.error('获取物流进度失败！')
         }
         this.progressInfo =res.data
@@ -159,9 +167,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '../../plugins/timeline/timeline.css';
+@import '../../plugins/timeline-item/timeline-item.css';
   .order{
 
   }
+
   .el-cascader{
     width: 100%;
   }

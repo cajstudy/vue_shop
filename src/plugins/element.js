@@ -38,6 +38,9 @@ import {
 
 } from 'element-ui'
 
+import Timeline from './timeline/index.js'
+import TimelineItem from './timeline-item/index.js'
+
 Vue.use(Button)
 Vue.use(Form)
 Vue.use(FormItem)
@@ -45,6 +48,8 @@ Vue.use(Input)
 Vue.use(Container)
 Vue.use(Header)
 Vue.use(Steps)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 Vue.use(Step)
 Vue.use(Aside)
 Vue.use(Main)
