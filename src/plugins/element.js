@@ -7,6 +7,8 @@ import {
     Message,
     Container,
     Header,
+    CheckboxGroup,
+    Checkbox,
     Aside,
     Main,
     Menu,
@@ -34,7 +36,8 @@ import {
     Tabs,
     Steps,
     Step,
-    TabPane
+    TabPane,
+    Upload
 
 } from 'element-ui'
 
@@ -46,6 +49,9 @@ Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Container)
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
+Vue.use(Upload)
 Vue.use(Header)
 Vue.use(Steps)
 Vue.use(Timeline)
