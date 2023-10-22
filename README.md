@@ -1,5 +1,7 @@
 # vue_shop
 
+常爱佳练习前端项目开发，基于黑马vue实战
+
 ## Project setup
 ```
 npm install
